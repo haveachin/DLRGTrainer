@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DLRGTrainer.ExercisePage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="0, 20, 0, 0"/>
+    </ContentPage.Padding>
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="_none_"/>
+    </ContentPage.ToolbarItems>-->
+    <ListView 
+        x:Name="listView"
+        HasUnevenRows="True"
+        ItemSelected="OnItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell
+                    Text="{Binding Info}"
+                    Detail="{Binding RecordTaken, StringFormat='{}{0:dd.MM.yyyy}'}">
+                    <TextCell.ContextActions>
+                        <MenuItem
+                            Text="Löschen"
+                            Clicked="OnDeleteExercise"
+                            IsDestructive="True"
+                            CommandParameter="{Binding .}"/>
+                    </TextCell.ContextActions>
+                </TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

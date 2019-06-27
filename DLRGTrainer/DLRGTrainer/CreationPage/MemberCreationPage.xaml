@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DLRGTrainer.CreationPage.MemberCreationPage"
+             Title="Neues Mitglied">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="0, 20, 0, 0"/>
+    </ContentPage.Padding>
+    <StackLayout
+        x:Name="stackLayout"
+        VerticalOptions="Center"
+        Padding="20, 0, 20, 0">
+        <Entry 
+            x:Name="ety_forename"
+            TextChanged="OnTextChanged"
+            Keyboard="Text"
+            Placeholder="Vorname"/>
+        <Entry 
+            x:Name="ety_surname"
+            TextChanged="OnTextChanged"
+            Keyboard="Text"
+            Placeholder="Nachname"/>
+        <Button
+            x:Name="btn_create"
+            Parent="0, 20, 0, 0"
+            Text="Erstellen"
+            IsEnabled="False"/>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ImgCircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="DLRGTrainer.MemberDetailPage"
+             NavigationPage.HasBackButton="False"
+             Title="Details">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="0, 20, 0, 0"/>
+    </ContentPage.Padding>
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Bearbeiten"
+            Activated="OnEditMember"/>
+    </ContentPage.ToolbarItems> -->
+    <AbsoluteLayout>
+        <BoxView
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 140"
+            AbsoluteLayout.LayoutFlags="WidthProportional"
+            Color="#ff2129"/>
+        <ImgCircle:CircleImage
+            x:Name="img_profile"
+            AbsoluteLayout.LayoutBounds="0.5, 0, 80, 80"
+            AbsoluteLayout.LayoutFlags="XProportional"
+            Aspect="AspectFill"
+            Source="https://haveachin.de/Resource/Image/logo-dlrg.png"/>
+        <Label
+            AbsoluteLayout.LayoutBounds="0.5, 75, 1, 1"
+            AbsoluteLayout.LayoutFlags="XProportional, SizeProportional" 
+            HorizontalOptions="Center"
+            Text="{Binding FullName}"
+            TextColor="#fff200"
+            FontSize="28"
+            FontAttributes="Bold" />
+        <TableView
+            AbsoluteLayout.LayoutBounds="0, 200, 1, 1"
+            AbsoluteLayout.LayoutFlags="SizeProportional">
+            <TableRoot>
+                <TableSection
+                    x:Name="ts_exercises"
+                    Title="Übungen">
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </AbsoluteLayout>
+</ContentPage>

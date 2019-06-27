@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="DLRGTrainer.MasterPage"
+    xmlns:local="clr-namespace:DLRGTrainer">
+    <MasterDetailPage.Master>
+        <ContentPage
+             Title="Mitglieder">
+            <ContentPage.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 20, 0, 0"/>
+            </ContentPage.Padding>
+            <ContentPage.ToolbarItems>
+                <ToolbarItem
+                    Text="Neu"
+                    Activated="OnAdd"/>
+            </ContentPage.ToolbarItems>
+            <StackLayout>
+                <!--<Button
+                    x:Name="bt_drop"
+                    Clicked="OnDrop"
+                    Text="DROP"/>-->
+                <SearchBar 
+                    Placeholder="Suche"
+                    FontAttributes="Bold"
+                    TextChanged="OnSearchBarTextChanged">
+                </SearchBar>
+                <ListView 
+                    x:Name="listView"
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="True"
+                    Refreshing="OnRefreshing"
+                    ItemSelected="OnItemSelected"
+                    ItemTapped="OnItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell
+                                Text="{Binding FullName}"
+                                Detail="{Binding LastRecord, StringFormat='Letzte Messung: {0:dd.MM.yy}'}">
+                                <TextCell.ContextActions>
+                                    <MenuItem
+                                        Text="Löschen"
+                                        Clicked="OnDeleteMember"
+                                        IsDestructive="True"
+                                        CommandParameter="{Binding .}"/>
+                                </TextCell.ContextActions>
+                            </TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage></ContentPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

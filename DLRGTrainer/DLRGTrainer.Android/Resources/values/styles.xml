@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+  <!-- Standart -->
+  <color name="white">#fff</color>
+  <color name="black">#000</color>
+  
+  <!-- Classic -->
+  <color name="dlrg_red">#ff2129</color>
+  <color name="dlrg_yellow">#fff200</color>
+  <color name="dlrg_blue">#0b2C7B</color>
+  
+  <!-- Modern -->
+  <color name="dlrg_red_modern">#ff2129</color>
+  <color name="dlrg_yellow_modern">#fff200</color>
+  
+  <style name="MainTheme" parent="MainTheme.Base">
+  </style>
+  <!-- Base theme applied no matter what API -->
+  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
+    <item name="windowNoTitle">true</item>
+    <!--We will be using the toolbar so no need to show ActionBar-->
+    <item name="windowActionBar">false</item>
+    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">@color/dlrg_red</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">@color/dlrg_red</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    <item name="colorAccent">@color/dlrg_blue</item>
+    <!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
+    <item name="windowActionModeOverlay">true</item>
+
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+  </style>
+
+  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">#FF4081</item>
+  </style>
+  
+  <!-- DLRG Classic 
+  <style name="DLRG" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+
+    <item name="colorPrimaryDark">@color/dlrg_red</item>
+    <item name="textColorPrimary">@color/dlrg_yellow</item>
+    <item name="colorPrimary">@color/dlrg_red</item>
+    <item name="colorAccent">@color/dlrg_blue</item>
+    <item name="navigationBarColor">@color/dlrg_blue</item>
+    
+    <item name="windowActionModeOverlay">true</item>
+
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+  </style>-->
+
+</resources>

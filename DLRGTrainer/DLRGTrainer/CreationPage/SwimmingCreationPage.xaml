@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<d:ExerciseCreationPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:DLRGTrainer.CreationPage;assembly=DLRGTrainer"
+    x:Class="DLRGTrainer.CreationPage.SwimmingCreationPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 40, 0, 0"
+                    Android="0, 20, 0, 0"/>
+    </ContentPage.Padding>
+    <Grid
+        RowSpacing="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout
+            Grid.Row="0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Picker
+                x:Name="pkr_swimmingTechniques"
+                Title="Schwimmtechnik">
+            </Picker>
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Center">
+                <Label
+                    VerticalOptions="Center"
+                    FontSize="Medium"
+                    Text="Runden: "/>
+                <Entry
+                    x:Name="ety_laps"
+                    TextChanged="OnTextChanged"
+                    WidthRequest="50"
+                    Keyboard="Numeric"
+                    Text="{Binding Source={x:Reference stepper}, Path=Value}"/>
+            </StackLayout>
+            <Stepper
+                x:Name="stepper"
+                HorizontalOptions="Center"
+                Increment="1"
+                Minimum="0"
+                Maximum="1024"
+                Value="{Binding Source={x:Reference ety_laps}, Path=Text}"/>
+        </StackLayout>
+        <StackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Grid.Row="1">
+            <Label
+                x:Name="lbl_timer"
+                HorizontalOptions="Center"
+                FontSize="42"
+                Text="00:00:00"/>
+            <StackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="btn_toggle"
+                    Clicked="OnToggle"
+                    Text="Start"/>
+                <Button
+                    x:Name="btn_lap"
+                    Clicked="OnLap"
+                    Text="Runde"/>
+                <Button
+                    x:Name="btn_reset"
+                    Clicked="OnReset"
+                    Text="Neu"/>
+            </StackLayout>
+        </StackLayout>
+        <ListView 
+            x:Name="lv_laps"
+            Grid.Row="2"
+            HasUnevenRows="True"
+            ItemSelected="OnItemSelected"
+            ItemTapped="OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Text="{Binding ., StringFormat='{}{0:mm\\:ss\\:ff}'}">
+                        <TextCell.ContextActions>
+                            <MenuItem
+                                Text="Löschen"
+                                Clicked="OnDeleteLap"
+                                IsDestructive="True"
+                                CommandParameter="{Binding .}"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</d:ExerciseCreationPage>
